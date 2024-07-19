@@ -3,16 +3,18 @@ import axios from "../api/axios";
 import MovieModal from "./MovieModal";
 import "./Row.css";
 
-// import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
+
+// import Swiper core and required modules
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+
 
 export default function Row({ isLargeRow, title, id, fetchUrl }) {
   const [movies, setMovies] = useState([]);
@@ -64,8 +66,9 @@ export default function Row({ isLargeRow, title, id, fetchUrl }) {
       >
         <div id={id} className="row__posters">
           {movies.map((movie) => (
-            <SwiperSlide  key={movie.id}>
+            <SwiperSlide>
               <img
+                key={movie.id}
                 style={{ padding: "25px 0" }}
                 className={`row__poster ${isLargeRow && "row__posterLarge"}`}
                 src={`https://image.tmdb.org/t/p/original/${
